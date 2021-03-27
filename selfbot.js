@@ -38,9 +38,13 @@ function log ( text ) {
 
 function check_color ( col, message ) {
   if ( col == "role" ) {
-    if ( message.member ) return message.member.displayHexColor
-    else return "#ffffff"
-  } else return col
+    if ( message.member ) {
+      var role = message.member.roles.color
+      if ( ! role ) col = "#ffffff"
+      else col = role.hexColor
+    } else col = "#ffffff"
+  }
+  return col
 }
 
 var hackPy
@@ -54,7 +58,7 @@ bot.on ( "ready", ( ) => {
   })
 })
 
-var color = config.color
+var color = "role"
 
 bot.on ( "message", async message => {
   if ( message.author.tag != bot.user.tag ) return
@@ -111,11 +115,11 @@ bot.on ( "message", async message => {
       .then ( res => res.json ( ))
       .then ( ( json ) => {
         var member = message.guild ? message.guild.member ( message.author ) : undefined
-        var author = member ? member.nickname : message.author.username
+        var author = ( member && member.nickname ) ? member.nickname : message.author.username
         var hugged
         if ( message.mentions.users.first ( )) {
           member = message.guild ? message.guild.member ( message.mentions.users.first ( )) :  undefined
-          hugged = member ? member.nickname : message.mentions.users.first ( ).username
+          hugged = ( member && member.nickname ) ? member.nickname : message.mentions.users.first ( ).username
         } else hugged = ""
         var e = new ds.MessageEmbed ( )
           .setColor ( check_color ( color, message ))
@@ -131,7 +135,7 @@ bot.on ( "message", async message => {
       .then ( res => res.json ( ))
       .then ( ( json ) => {
         var member = message.guild ? message.guild.member ( message.author ) : undefined
-        var author = member ? member.nickname : message.author.username
+        var author = ( member && member.nickname ) ? member.nickname : message.author.username
         var e = new ds.MessageEmbed ( )
           .setColor ( check_color ( color, message ))
           .setImage ( json.link )
