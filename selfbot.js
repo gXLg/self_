@@ -47,6 +47,12 @@ function check_color ( col, message ) {
   return col
 }
 
+function destroy ( ) {
+  log ( "Destroying" )
+  kill ( hackPy.pid )
+  bot.destroy ( )
+}
+
 var hackPy
 bot.on ( "ready", ( ) => {
   log ( ":3 logged in as " + bot.user.tag )
@@ -56,6 +62,10 @@ bot.on ( "ready", ( ) => {
     ch.send ( "subscribed" )
     log ( "Subscribed to private chat" )
   })
+})
+
+bot.on ( "invalidated", ( ) => {
+  destroy ( )
 })
 
 var color = "role"
@@ -172,8 +182,7 @@ bot.on ( "message", async message => {
     message.channel.send ( e )
     break
   case "x" :
-    kill ( hackPy.pid )
-    bot.destroy ( )
+    destroy ( )
     break
   }
 })
