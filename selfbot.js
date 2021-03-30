@@ -8,7 +8,7 @@ console.log ( "\x1b[34m"
 
 
 const ds = require ( config.lib )
-const { version: ds_version } = require ( config.lib )
+const { version : ds_version } = require ( config.lib )
 const bot = new ds.Client ( )
 const auth = require ( "./auth.json" )
 const fetch = require ( "node-fetch" )
