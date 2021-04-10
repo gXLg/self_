@@ -11,3 +11,5 @@ You can use them yourself, or write your own.
 
 Please be careful, because self-botting is against Discord's Terms of Service and can get you banned.
 I am not responsible for you and your actions.
+Of course, this source code can also be used for a normal bot.
+(Only the status part won't work well)
