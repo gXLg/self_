@@ -13,3 +13,5 @@ Please be careful, because self-botting is against Discord's Terms of Service an
 I am not responsible for you and your actions.
 Of course, this source code can also be used for a normal bot.
 (Only the status part won't work well)
+
+License: ah, you may use it in any way, and even modify it and sell it. Only not claim it to be yours.
