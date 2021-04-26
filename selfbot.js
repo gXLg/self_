@@ -45,6 +45,7 @@ bot.on ( "ready", ( ) => {
 
 
 bot.on ( "invalidated", ( ) => {
+  functions.log ( "Invalidated" )
   destroy ( )
 })
 
@@ -65,7 +66,7 @@ bot.on ( "message", async message => {
   if ( ! cmds.includes ( cmd )) {
     functions.log ( "got wrong command " + cmd )
     fixed = false
-    var predict = require_ ( "./predict_module/predict.js" )
+    var predict = require_ ( "gxlg_predict" )
     var p = predict ( cmds, cmd )
     if ( p ) {
       fixed = true
@@ -84,7 +85,7 @@ bot.on ( "message", async message => {
       break
     }
   }
-  if ( executed ) functions.log ( "[ " + name  + " ] " + cmd )
+  if ( executed ) functions.log ( "[ " + name  + " / " + cmd + " ] " )
 })
 
 
