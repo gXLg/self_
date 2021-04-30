@@ -50,7 +50,7 @@ Unzip the file in `commands/`.
 
 Helps to predict typed commands, based on keyboard layout.
 I have created a module `gxlg_predict`,
-see description at [https://www.npmjs.com/package/gxlg_predict](npm)
+see description at [npm](https://www.npmjs.com/package/gxlg_predict)
 
 **Future**
 
