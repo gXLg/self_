@@ -1,10 +1,9 @@
 **Finally, the big `v10` Update is here!**
 
-I will first update the README in parts, and then upload the code.
-Please be patient.
-
 To setup `config.json` and `config.ini` fill in the values,
 how it is said in the files.
+If you are kind, link me or my name (gXLg)
+in the status or in other way.
 
 Start the application with `node selfbot.js`.
 NodeJS 12+ is required
