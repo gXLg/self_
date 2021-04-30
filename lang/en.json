@@ -108,7 +108,8 @@
     "wrong" : "got wrong command ",
     "fixed" : "=> fixed",
     "notfixed" : "=> could not fix",
-    "process" : "processing message from "
+    "process" : "processing message from ",
+    "destroy" : "Destroying"
   },
   "modules" : {
     "startdo" : "Started script in language ",
