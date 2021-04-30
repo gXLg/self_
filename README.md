@@ -42,6 +42,10 @@ It returns the `lang` variable, which is the language object.
 When adding new command, don't forget about these three points
 and make related entries.
 
+I am working from mobile, and therefore can't upload folders.
+That's why I have uploaded a zip file with all the commands.
+Unzip the file in `commands/`.
+
 **Prediction module**
 
 Helps to predict typed commands, based on keyboard layout.
