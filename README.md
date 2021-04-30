@@ -1,13 +1,51 @@
-Too lazy to write this. But soon will do "_".
+[Finally, the big `v10` Update is here!]
 
-Setup `config.json`, `config.ini` and start with `node selfbot.js`.
+I will first update the README in parts, and then upload the code.
+Please be patient.
 
-You would probably need some modules, so go ahead and install them xD
+To setup `config.json` and `config.ini` fill in the values,
+how it is said in the files.
+
+Start the application with `node selfbot.js`.
+NodeJS 12+ is required
+
+All the modules are at my home folder,
+that's why I don't have them listed here.
+List of modules will be added in `v11/12`.
+
+
+[Changes]
+
+*Language support*
+
+The version `v10` adds language support,
+which means you can translate the bot into your language.
+
+For that create a new language file in `lang/`
+and specify it in the config.
+
+For example, if you want to translate the bot into russian:
+
+1) Create a copy of original `en.json` and name it `ru.json`.
+2) Specify in `config.json`: `"lang" : "ru"`.
+3) Don't forget to specify the prediction layout.
+I will talk about prediction module later.
+
+*Commands/Modules*
+
+All commands with language support use a reference to `functions.js`.
+It returns the `lang` variable, which is the language object.
+* Commands use `functions.lang.modules` for translations.
+* Command names use `functions.lang.commands`
+* Command categories use `functions.lang.categories`
+
+When adding new command, don't forget about these three points
+and make related entries.
+
+
+[Disclaimer]
 
 Don't say, you don't like my code, I have not written it for you.
-
-Btw, I did not upload any commands, but a zip with those commands, that I currently use.
-You can use them yourself, or write your own.
 
 Please be careful, because self-botting is against Discord's Terms of Service and can get you banned.
 I am not responsible for you and your actions.
