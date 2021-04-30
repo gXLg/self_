@@ -48,8 +48,12 @@ function status_off ( ) {
   kill ( hack_py.pid )
 }
 
+const lang = require ( "./lang/" + require ( "./config.json" ).lang + ".json" )
+
 module.exports = { "log" : log,
                    "check_color" : check_color,
                    "destroy" : destroy,
                    "status_on" : status_on,
-                   "status_off" : status_off }
+                   "status_off" : status_off,
+                   "lang" : lang }
+
