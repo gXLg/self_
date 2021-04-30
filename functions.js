@@ -1,5 +1,7 @@
 const { spawn } = require ( "child_process" )
 
+const lang = require ( "./lang/" + require ( "./config.json" ).lang + ".json" )
+
 function get_time ( ) {
   var today = new Date ( )
   var h = today.getHours ( )
@@ -31,7 +33,7 @@ function check_color ( col, message ) {
 const kill = require ( "tree-kill" )
 
 function destroy ( bot ) {
-  log ( "Destroying" )
+  log ( lang.log.destroy )
   status_off ( )
   bot.destroy ( )
 }
@@ -47,8 +49,6 @@ function status_off ( ) {
   global.status = false
   kill ( hack_py.pid )
 }
-
-const lang = require ( "./lang/" + require ( "./config.json" ).lang + ".json" )
 
 module.exports = { "log" : log,
                    "check_color" : check_color,
