@@ -42,6 +42,11 @@ It returns the `lang` variable, which is the language object.
 When adding new command, don't forget about these three points
 and make related entries.
 
+**Prediction module**
+
+Helps to predict typed commands, based on keyboard layout.
+I have created a module `gxlg_predict`,
+see description at [https://www.npmjs.com/package/gxlg_predict](npm)
 
 **Disclaimer**
 
