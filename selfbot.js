@@ -36,10 +36,10 @@ const auth = ini.parseSync ( "./config.ini" )
 
 
 bot.on ( "ready", ( ) => {
-  functions.log ( ":3 logged in as " + bot.user.tag )
+  functions.log ( functions.lang.log.ready + bot.user.tag )
   bot.users.fetch ( config.sub ).then ( ch => {
-    ch.send ( "subscribed" )
-    functions.log ( "Subscribed to private chat" )
+    ch.send ( functions.lang.msg.sub )
+    functions.log ( functions.lang.log.sub )
   })
 })
 
@@ -50,9 +50,7 @@ bot.on ( "invalidated", ( ) => {
 })
 
 
-global.color = "role"
-bot.on ( "message", async message => {
-  if ( message.author.tag != bot.user.tag ) return
+function process ( message ) {
   if ( message.content.slice ( 0, config.prefix.length ) != config.prefix ) return
   var cmd = message.content.split ( " " ) [ 0 ].slice ( config.prefix.length ).toLowerCase ( )
   var txt = message.content.trim ( ).split ( " " ).slice ( 1 ).join ( " " )
@@ -60,25 +58,33 @@ bot.on ( "message", async message => {
   var name = message.channel.name ?
     ( message.channel.guild.name + ", " + message.channel.name ) :
     ( message.channel.recipient.username )
-  var cmds = [ ]
   var fixed = true
-  for ( var c in commands ) cmds = cmds.concat ( commands [ c ])
+  var cmds = [ ]
+  var cmds_orig = [ ]
+  for ( var category in commands ) {
+    commands [ category ].forEach ( c => {
+      cmds.push ( functions.lang.commands [ category ] [ c ])
+      cmds_orig.push ( c )
+    })
+  }
   if ( ! cmds.includes ( cmd )) {
-    functions.log ( "got wrong command " + cmd )
+    functions.log ( functions.lang.log.wrong + cmd )
     fixed = false
     var predict = require_ ( "gxlg_predict" )
-    var p = predict ( cmds, cmd )
+    var p = predict ( cmds, cmd, functions.lang.layout )
     if ( p ) {
       fixed = true
       cmd = p
-      functions.log ( "=> fixed" )
-    } else functions.log ( "=> could not fix" )
+      if ( message.author.tag == bot.user.tag )
+        message.edit ( config.prefix + cmd + " " + txt )
+      functions.log ( functions.lang.log.fixed )
+    } else functions.log ( functions.lang.log.notfixed )
   }
   var executed = false
   if ( ! fixed ) return
   for ( var i in commands ) {
-    if ( commands [ i ].includes ( cmd )) {
-      var c = require_ ( "./commands/" + i + "/" + cmd )
+    if ( commands [ i ].includes ( cmds_orig [ cmds.indexOf ( cmd )])) {
+      var c = require_ ( "./commands/" + i + "/" + cmds_orig [ cmds.indexOf ( cmd )])
       var parameter = c.dependencies.map ( d => eval ( d ))
       c ( ... parameter )
       executed = true
@@ -86,7 +92,23 @@ bot.on ( "message", async message => {
     }
   }
   if ( executed ) functions.log ( "[ " + name  + " / " + cmd + " ] " )
+}
+
+global.color = "role"
+bot.on ( "message", async message => {
+  if ( message.content.slice ( 0, config.prefix.length ) != config.prefix ) return
+  if ( message.author.tag != bot.user.tag ) {
+    message.react ( "⚙️" )
+    return
+  }
+  process ( message )
 })
 
+bot.on ( "messageReactionRemove", ( react, user ) => {
+  if ( user.tag != bot.user.tag ) return
+  if ( react.emoji.name != "⚙️" ) return
+  functions.log ( functions.lang.log.process + react.message.author.tag )
+  process ( react.message )
+})
 
 bot.login ( auth.user.token )
