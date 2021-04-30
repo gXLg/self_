@@ -4,5 +4,6 @@
   "color" : "standart color",
   "sub" : "id of user to sub first",
   "lib" : "library for selfbots, i prefer 'discord.js-selfbot'",
-  "prefix" : "prefix"
+  "prefix" : "prefix",
+  "lang" : "language file, check out README"
 }
