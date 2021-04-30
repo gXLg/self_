@@ -1,4 +1,4 @@
-[Finally, the big `v10` Update is here!]
+**Finally, the big `v10` Update is here!**
 
 I will first update the README in parts, and then upload the code.
 Please be patient.
@@ -14,7 +14,7 @@ that's why I don't have them listed here.
 List of modules will be added in `v11/12`.
 
 
-[Changes]
+**Changes**
 
 *Language support*
 
@@ -43,7 +43,7 @@ When adding new command, don't forget about these three points
 and make related entries.
 
 
-[Disclaimer]
+**Disclaimer**
 
 Don't say, you don't like my code, I have not written it for you.
 
