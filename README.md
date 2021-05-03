@@ -33,7 +33,7 @@ I will talk about prediction module later.
 
 Currently added languages:
 * English in `en.json`
-* Russian in `ru.json`
+* Russian in `ru.json` [(@Server-ok)](https://github.com/Server-ok)
 
 
 *Commands/Modules*
