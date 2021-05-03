@@ -1,4 +1,4 @@
-# Finally, the big `v10` Update is here!**
+# Finally, the big `v10` Update is here!
 
 To setup `config.json` and `config.ini` fill in the values,
 how it is said in the files.
