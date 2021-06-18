@@ -1,3 +1,7 @@
+# No longer working on it, sorry. The v10 was the last update
+
+
+
 # Finally, the big `v10` Update is here!
 
 To setup `config.json` and `config.ini` fill in the values,
